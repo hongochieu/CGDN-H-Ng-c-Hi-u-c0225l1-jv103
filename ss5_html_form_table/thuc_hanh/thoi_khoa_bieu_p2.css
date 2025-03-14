@@ -1,0 +1,39 @@
+h1{
+    text-align: center;
+    color: blue;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between; 
+     align-items: center; 
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info-container div {
+    margin: 0 20px; 
+}
+
+table{
+    display: table;
+    margin: auto;
+    border-collapse: collapse ;
+}
+
+table th, table td {
+    border: 2px solid black;
+    padding: 8px;
+    text-align: left;
+    width: 150px;
+}
+
+.highlight {
+    background-color: yellow;
+    text-align: center;
+}
+
+.subject-header {
+    background-color: orange;
+    text-align: center;
+}

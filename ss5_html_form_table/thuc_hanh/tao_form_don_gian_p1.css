@@ -1,0 +1,58 @@
+
+body {
+    background-color: #e0ffff; 
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 400px;
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 50px auto;
+    text-align: left;
+    border-radius: 5px;
+}
+
+
+h1 {
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 0;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+label {
+    font-weight: bold;
+    color: darkblue;
+    display: inline-block;
+    width: 80px;
+}
+
+
+input[type="text"] {
+    width:  200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="submit"], input[type="reset"] {
+    background-color: #dcdcdc;
+    border: 1px solid #888;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #bbb;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trung binh 3 mon</title>
+</head>
+<body>
+<p onclick="doSomeThing()"><button>Click me</button></p>
+
+<script>
+  function doSomeThing() {
+    let Toan = parseFloat(prompt("Nhập điểm Toán"));
+    let Ly = parseFloat(prompt("Nhập điểm Lý"));
+    let Hoa = parseFloat(prompt("Nhập điểm Hóa"));
+    var Trungbinh = (Toan + Hoa + Ly)/3;
+    document.write("Điểm trung bình :" + Trungbinh);
+  }
+</script>
+</body>
+</html>

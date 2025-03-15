@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h3{
+    color: blue;
+}
+table {
+    width: 50%;
+    margin: auto;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: orange;
+    color: white;
+}
+.sunday {
+    background-color: red;
+    color: white;
+}
+.saturday {
+    background-color: blue;
+    color: white;
+}
+.date{
+    font-size: 20px;
+}
+.date.saturday {
+    font-size: 20px;
+    background-color: white;
+    color:blue ;
+}
+.date.sunday {
+    font-size: 20px;
+    background-color: white;
+    color:red ;
+}

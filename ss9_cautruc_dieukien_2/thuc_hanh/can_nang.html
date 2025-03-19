@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Tính sô cân nặng</h3>
+    <label for="">Nhập số cân nặng:</label>
+    <input type="number" id="weight" placeholder=" Nhập số cân nặng"><br><br>
+    <label for="">Nhập chiều cao:</label>
+    <input type="number" id="height" placeholder="Nhập chiều cao"><br>
+    <p onclick="tinhCanNang()"><button>Kiểm tra</button></p>
+
+    <script>
+        function tinhCanNang() {
+            let weight = document.getElementById("weight").value;
+            let height = document.getElementById("height").value;
+
+            if (weight === "" || height === "" || weight <= 0 || height <= 0) {
+                document.writeln("Vui lòng nhập số hợp lệ cho cân nặng và chiều cao.");
+                return;
+            }
+
+            let heightInMeters = height / 100;
+            let bmi = weight / (heightInMeters * heightInMeters);
+
+            let result = "";
+            if (bmi < 18.5) {
+                result = "Bạn đang thiếu cân.";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                result = "Bạn có cân nặng bình thường.";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                result = "Bạn đang thừa cân.";
+            } else {
+                result = "Bạn bị béo phì.";
+            }
+
+            document.writeln(`Chỉ số BMI của bạn là: ${bmi.toFixed(2)}\n${result}`);
+        }
+
+    </script>
+    
+</body>
+</html>

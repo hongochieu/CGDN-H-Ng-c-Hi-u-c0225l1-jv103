@@ -4,39 +4,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <input type="number" id="num1" placeholder="Nhập số thứ nhất">
-    <input type="number" id="num2" placeholder="Nhập số thứ hai">
+    <input type="number" id="num2" placeholder="Nhập số thứ hai"><br><br>
     <button onclick="Add()">Cộng</button>
-    <button onclick="Sub()">Trừ</button><br><br>
+    <button onclick="Sub()">Trừ</button>
+    <button onclick="Mul()">Nhân</button>
+    <button onclick="Div()">Chia</button>
     <h3>Result:</h3>
     <div id="result">0</div>
     <script>
+        function getValues() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("result").innerText = "Vui lòng nhập số hợp lệ!";
+                return null;
+            }
+
+            return { num1, num2 };
+        }
         function Add() {
-            let num1 = parseFloat(document.getElementById("num1").value);
-            let num2 = parseFloat(document.getElementById("num2").value);
-
-            if (isNaN(num1) || isNaN(num2)) {
-                document.getElementById("result").innerText = "Vui lòng nhập số hợp lệ!";
-                return;
+            let values = getValues();
+            if (values) {
+                document.getElementById("result").innerText = values.num1 + values.num2;
             }
-
-            let sum = num1 + num2;
-            document.getElementById("result").innerText = sum;
         }
+
         function Sub() {
-            let num1 = parseFloat(document.getElementById("num1").value);
-            let num2 = parseFloat(document.getElementById("num2").value);
-
-            if (isNaN(num1) || isNaN(num2)) {
-                document.getElementById("result").innerText = "Vui lòng nhập số hợp lệ!";
-                return;
+            let values = getValues();
+            if (values) {
+                document.getElementById("result").innerText = values.num1 - values.num2;
             }
-
-            let difference = num1 - num2;
-            document.getElementById("result").innerText = difference;
         }
-        
+
+        function Mul() {
+            let values = getValues();
+            if (values) {
+                document.getElementById("result").innerText = values.num1 * values.num2;
+            }
+        }
+
+        function Div() {
+            let values = getValues();
+            if (values) {
+                if (values.num2 === 0) {
+                    document.getElementById("result").innerText = "Không thể chia cho 0!";
+                } else {
+                    document.getElementById("result").innerText = (values.num1 / values.num2).toFixed(2);
+                }
+            }
+        }
     </script>
 </body>
 </html>

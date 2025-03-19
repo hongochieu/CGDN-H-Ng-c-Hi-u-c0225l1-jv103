@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <th><label for="Amount">Amount</label></th>
+                <th>From Currency</th> 
+                <th>To Currency</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Amount">
+                </td>
+                <td>
+                    <select id="From">
+                        <option value="VND">VND</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="To">
+                        <option value="VND">VND</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </td>
+                <td>
+                    <button onclick="convertCurrency()">Convert</button>
+                </td>
+            </tr>
+        </tbody>
+    </table><br>
+    <p id="Result"></p>
+
+    <script>
+        function convertCurrency() { 
+            let fromCurrency = document.getElementById("From").value;
+            let toCurrency = document.getElementById("To").value;
+            let amount = parseFloat(document.getElementById("Amount").value); 
+
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("Result").innerHTML = "Please enter a valid amount.";
+                return;
+            }
+
+            let exchangeRate = 23000; 
+            let result;
+
+            if (fromCurrency === "VND" && toCurrency === "USD") {
+                result = amount / exchangeRate;
+            } else if (fromCurrency === "USD" && toCurrency === "VND") {
+                result = amount * exchangeRate;
+            } else {
+                result = amount;
+            }
+
+            document.getElementById("Result").innerHTML = `Result: ${result.toFixed(2)} ${toCurrency}`;
+        }
+    </script>
+</body>
+</html>

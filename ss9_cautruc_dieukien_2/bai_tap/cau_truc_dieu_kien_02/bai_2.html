@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="m" placeholder="Nhập số m cần đổi">
+    <button onclick="chuyenDoi()">Kiểm tra</button>
+    <p id="result"></p>
+    <script>
+        function chuyenDoi() {
+            let m = parseFloat(document.getElementById("m").value);
+
+            if (isNaN(m)) {
+                document.getElementById("result").innerHTML = "Vui lòng nhập một số hợp lệ!";
+                return;
+            }
+
+            let ft =m * 3.2808
+
+            document.getElementById("result").innerHTML = `Result: ${ft.toFixed(2)} feet`;
+        }
+    </script>
+</body>
+</html>

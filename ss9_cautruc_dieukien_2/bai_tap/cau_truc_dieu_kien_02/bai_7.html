@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Giải phương trình bậc 2 (ax^2+bx+c=0)</h3>
+    <label>Nhập a:</label>
+    <input type="number" id="a"><br><br>
+    <label>Nhập b:</label>
+    <input type="number" id="b"><br><br>
+    <label>Nhập c:</label>
+    <input type="number" id="c"><br><br>
+    <button onclick="giaiPhuongTrinh()">Tính</button>
+    <p id="result"></p>
+    <script>
+        function giaiPhuongTrinh() {
+            let a = parseFloat(document.getElementById("a").value);
+            let b = parseFloat(document.getElementById("b").value);
+            let c = parseFloat(document.getElementById("c").value);
+            let result = document.getElementById("result");
+
+            if(a === 0) {
+                if(b === 0){
+                    if(c === 0){
+                        result.innerHTML = "Phương trình có vô số nghiệm!";
+                    }else{
+                        result.innerHTML = "Phương trình vô nghiệm!";
+                    }
+                }else{
+                    let x = -c / b
+                    result.innerHTML = `Phương trình có nghiệm duy nhất: x = ${x.toFixed(2)}`
+                }
+                return;
+            }
+
+            let delta = b * b - 4 * a * c;
+
+            if (delta > 0) {
+                let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                result.innerHTML = `Phương trình có 2 nghiệm: x₁ = ${x1.toFixed(2)}, x₂ = ${x2.toFixed(2)}`;
+            } else if (delta === 0) {
+                let x = -b / (2 * a);
+                result.innerHTML = `Phương trình có nghiệm kép: x = ${x.toFixed(2)}`;
+            } else {
+                result.innerHTML = "Phương trình vô nghiệm trong tập số thực";
+            }
+        }
+        // document.getElementById("result").innerHTML = result;
+    </script>
+</body>
+</html>

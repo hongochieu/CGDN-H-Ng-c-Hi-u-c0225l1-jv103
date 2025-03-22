@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Tính cước điện thoại của hộ gia đình</h3>
+
+    <label>Cước thuê bao cố định:</label>
+    <input type="number" id="thueBao"><br><br>
+
+    <label for="">Số phút gọi nội mạng:</label>
+    <input type="number" id="noiMang"><br><br>
+
+    <label>Số phút gọi ngoại mạng:</label>
+    <input type="number" id="ngoaiMang"><br><br>
+
+    <label>Phí dịch vụ khác:</label>
+    <input type="number" id="dichVuKhac"><br><br>
+
+    <button onclick="calculatePhoneCharges()">Tính cước điện thoại</button>
+
+    <h3 id="result"></h3>
+    <script>
+        function calculatePhoneCharges() {
+            let thueBao = parseFloat(document.getElementById("thueBao").value) || 0;
+            let noiMang = parseFloat(document.getElementById("noiMang").value) || 0;
+            let ngoaiMang = parseFloat(document.getElementById("ngoaiMang").value) || 0;
+            let dichVuKhac = parseFloat(document.getElementById("dichVuKhac").value) || 0;
+
+            let giaNoiMang = noiMang > 100 ? 800 : 1000;
+            let giaNgoaiMang = ngoaiMang > 50 ? 1200 : 1500;
+
+            let cuocNoiMang = noiMang * giaNoiMang;
+            let cuocNgoaiMang = ngoaiMang * giaNgoaiMang;
+            let tongCuoc = thueBao + cuocNoiMang + cuocNgoaiMang + dichVuKhac;
+            
+            document.getElementById("result").innerHTML = 
+                `Tổng cước điện thoại: ${tongCuoc.toLocaleString('vi-VN')} VNĐ`;
+        }
+    </script>
+</body>
+</html>

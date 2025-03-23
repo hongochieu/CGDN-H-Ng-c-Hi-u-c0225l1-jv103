@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Tính thuế thu nhập cá nhân</h3>
+    <label>Tổng thu nhập hàng tháng:</label>
+    <input type="number" id="thu_nhap"><br><br>
+    <label>Số người phụ thuộc:</label>
+    <input type="number" id="so_nguoi_phu_thuoc"><br><br>
+    <button onclick="tinhThuNhapCN()">Kiểm tra</button>
+    <p id="ket_qua"></p>
+    <script>
+        function tinhThuNhapCN() {
+            let thu_nhap = parseFloat(document.getElementById("thu_nhap").value);
+            let so_nguoi_phu_thuoc = parseInt(document.getElementById("so_nguoi_phu_thuoc").value);
+
+            if (isNaN(thu_nhap) || thu_nhap < 0 || isNaN(so_nguoi_phu_thuoc) || so_nguoi_phu_thuoc < 0) {
+                document.getElementById("ket_qua").innerText = "Vui lòng nhập số hợp lệ!";
+                return;
+            }
+
+            let giam_tru_ban_than = 11000000;
+            let giam_tru_nguoi_phu_thuoc = so_nguoi_phu_thuoc * 4400000;
+            
+            let thu_nhap_chiu_thue = thu_nhap - giam_tru_ban_than - giam_tru_nguoi_phu_thuoc;
+            if (thu_nhap_chiu_thue <= 0) {
+                document.getElementById("ket_qua").innerText = "Thuế thu nhập cá nhân phải nộp: 0 VNĐ";
+                return;
+            }
+            
+            let bac_thue = [5000000, 5000000, 5000000, 10000000, 20000000, 28000000];
+            let thue_suat = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35];
+            
+            let thue = 0;
+            for (let i = 0; i < bac_thue.length; i++) {
+                if (thu_nhap_chiu_thue > bac_thue[i]) {
+                    thue += bac_thue[i] * thue_suat[i];
+                    thu_nhap_chiu_thue -= bac_thue[i];
+                } else {
+                    thue += thu_nhap_chiu_thue * thue_suat[i];
+                    thu_nhap_chiu_thue = 0;
+                    break;
+                }
+            }
+            if (thu_nhap_chiu_thue > 0) {
+                thue += thu_nhap_chiu_thue * thue_suat[thue_suat.length - 1];
+            }
+            
+            document.getElementById("ket_qua").innerText = "Thuế thu nhập cá nhân phải nộp: " + thue.toLocaleString('vi-VN') + " VNĐ";
+        }
+    </script>
+</body>
+</html>

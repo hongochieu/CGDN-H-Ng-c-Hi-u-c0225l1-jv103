@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Từ điển</h3>
+    <label>Nhập từ tiếng Anh:</label>
+    <input type="text" id="english" placeholder="Nhập từ cần dịch"><br><br>
+
+    <button onclick="dichTu()">Dịch</button>
+
+    <p id="result"></p>
+
+    <script>
+        const tuDienAnhViet = {
+            "hello": "xin chào",
+            "goodbye": "tạm biệt",
+            "thank you": "cảm ơn",
+            "sorry": "xin lỗi",
+            "yes": "vâng",
+            "no": "không"
+        };
+
+        function dichTu() {
+            let tuNhap = document.getElementById("english").value;
+            let ketQua = tuDienAnhViet[tuNhap] || "Không tìm thấy";
+            document.getElementById("result").innerHTML = "Bản dịch: " + ketQua;
+        }
+    </script>
+</body>
+</html>

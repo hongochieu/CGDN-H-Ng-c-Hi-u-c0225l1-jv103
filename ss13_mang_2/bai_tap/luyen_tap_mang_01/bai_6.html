@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function timPhanTu() {
+            let mang = [80, 33, 64, 27, 2, 7, 12, 90, 4, 77];
+            let V = parseInt(prompt("Nhập vào một số nguyên V:"));
+            
+            if (mang.includes(V)) {
+                document.write(V + " is in the array");
+            } else {
+                document.write(V + " is not in the array");
+            }
+        }
+
+        timPhanTu();
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function mangSoNguyen() {
+            let mang = [80,33,64,27,2,7,12,90,4,77]
+            let count = 0
+
+            for (let i = 0; i < mang.length; i++) {
+                if (mang[i] >= 10) {
+                    count ++
+                }
+            }
+            document.write("Số phần tử lớn hơn hoặc bằng 10: " + count);
+        }
+        mangSoNguyen()
+    </script>
+</body>
+</html>

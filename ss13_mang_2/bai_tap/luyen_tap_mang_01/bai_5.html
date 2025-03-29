@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function soNguyenAm() {
+            let mang = [3,66,-1,23,-24,-55,-20,67,-90,-79];
+            let count = 0
+
+            for (let i = 0; i < mang.length; i++) {
+                if (mang[i] < 0) {
+                    count ++;
+                }
+            }
+            document.writeln(`Có ${count} số nguyên âm`);
+        }
+        soNguyenAm()
+    </script>
+</body>
+</html>

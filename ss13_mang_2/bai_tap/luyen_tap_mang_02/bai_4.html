@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function demSoTu(chuoiNhap) {
+    
+            let tu = chuoiNhap.trim().split(/\s+/);
+            return tu.length;
+        }
+
+
+        let chuoiMau = "Hello bạn";
+        document.writeln("Chuỗi: " + chuoiMau + "<br>");
+
+
+        let soTu = demSoTu(chuoiMau);
+        document.writeln("Số từ trong chuỗi là: " + soTu);
+
+    </script>
+</body>
+</html>

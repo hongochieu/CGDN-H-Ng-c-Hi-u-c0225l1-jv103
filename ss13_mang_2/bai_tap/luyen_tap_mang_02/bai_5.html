@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function kiemTraChuoi (string1, string2) {
+            if (string1 === string2) {
+                return("Hai chuổi giống nhau")
+            }else{
+                return("Hai chuỗi không giống nhau")
+            }
+        }
+            let string1 = prompt("Nhập chuỗi thứ nhất:");
+            let string2 = prompt("Nhập chuỗi thứ hai:");
+
+            let kiemTra = kiemTraChuoi (string1, string2)
+            document.writeln(kiemTra);
+    </script>
+</body>
+</html>

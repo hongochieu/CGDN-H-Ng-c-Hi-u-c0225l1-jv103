@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let mang = prompt("Nhập các ký tự:")
+        let kichThuocMang = mang.length;
+
+        document.writeln("Kích thước của mảng là:" + kichThuocMang + "<br>")
+        function khaiBaoMang(mang) {
+            let count = 0;
+
+            for (let i = 0; i < mang.length; i++){
+                if(!isNaN(mang[i]) && mang[i] >= '0' && mang[i] <= '9'){
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        let soKyTu = khaiBaoMang(mang);
+        document.writeln("Số ký tự số (0-9) trong mảng là:" + soKyTu);
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Finder</title>
+</head>
+<body>
+    <script>
+        let ngoi_sao_1 = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+        let ngoi_sao_2 = ['Ursa Minor', 'Taurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+
+        function timNgoiSao(tenNgoiSao) {
+
+            for (let i = 0; i < ngoi_sao_1.length; i++) {
+                if (ngoi_sao_1[i].toLowerCase() === tenNgoiSao) {
+                    return ngoi_sao_2[i];
+                }
+            }
+            return null; // Không tìm thấy
+        }
+
+        let nhapTen = prompt("Nhập tên ngôi sao:");
+        let tenChomSao = timNgoiSao(nhapTen);
+
+        if (tenChomSao !== null) {
+            document.write(`<h2>Ngôi sao ${nhapTen} thuộc chòm sao: ${tenChomSao}</h2>`);
+        } else {
+            document.write(`<h2>Không tìm thấy thông tin cho ngôi sao "${nhapTen}"</h2>`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function feetToMeter(feet) {
+            let meter = 0.305 * feet;
+            return meter; 
+        }
+
+        
+        function meterToFeet(meter) {
+            let feet = 3.279 * meter;
+            return feet; 
+        }
+
+        
+        let feet = prompt("Nhập số Feet cần đổi:");
+        let meters = feetToMeter(feet);
+        document.writeln(`${feet} feet = ${meters} met.<br>`)
+
+        let meter = prompt("Nhập số Meter cần đổi:")
+        let feetM = meterToFeet(meter);
+        document.writeln(`${meter} meter = ${feetM} feet`);
+    </script>
+</body>
+</html>

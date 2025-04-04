@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function thamSo(a, b) {
+            if (a > b) {
+                alert("Giá trị của tham số thứ nhất lớn hơn tham số thứ hai!");
+            } else {
+                return a + b;
+            }
+        }
+
+        let soA = parseFloat(prompt("Nhập số a:"));
+        let soB = parseFloat(prompt("Nhập số b:"));
+        
+        let ketQua = thamSo(soA, soB);
+
+        if (ketQua !== undefined) {
+            document.writeln("Tổng của hai số là: " + ketQua);
+        }
+    </script>
+</body>
+</html>

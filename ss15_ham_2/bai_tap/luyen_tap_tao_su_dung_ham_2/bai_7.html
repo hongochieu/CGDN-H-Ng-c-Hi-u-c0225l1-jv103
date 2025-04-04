@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function doiChoHaiSo(num1, num2) {
+
+            let temp = num1;
+            num1 = num2;
+            num2 = temp;
+
+    
+            return [num1, num2];
+            
+        
+        }
+        let num1 = parseInt(prompt("Nhập số nguyên thứ nhất:"));
+        let num2 = parseInt(prompt("Nhập số nguyên thứ hai:"));
+
+        let [newNum1, newNum2] = doiChoHaiSo(num1, num2);
+
+        
+        document.writeln(`Sau khi đổi chỗ số ${num1} và số ${num2} là:`+ newNum1 +`,`+ newNum2);
+    </script>
+</body>
+</html>

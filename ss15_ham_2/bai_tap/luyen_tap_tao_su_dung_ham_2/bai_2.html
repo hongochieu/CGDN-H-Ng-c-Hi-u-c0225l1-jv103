@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính chu vi và diện tích hình tròn</title>
+</head>
+<body>
+    <script>
+        function dienTichHinhTron(r) {
+            return r * r * 3.14;
+        }
+
+        function chuViHinhTron(r) {
+            return 2 * 3.14 * r;
+        }
+
+        let r = parseFloat(prompt("Nhập bán kính hình tròn:"));
+
+        document.writeln("Diện tích hình tròn là: " + dienTichHinhTron(r) + "cm^2"+ "<br>");
+        document.writeln("Chu vi hình tròn là: " + chuViHinhTron(r) + "cm");
+    </script>
+</body>
+</html>

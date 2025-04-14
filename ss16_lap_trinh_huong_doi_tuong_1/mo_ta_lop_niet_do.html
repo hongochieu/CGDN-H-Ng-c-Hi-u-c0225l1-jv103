@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class nhietDo {
+            constructor(doC = 0) {
+                if (typeof doC !== "number") {
+                    Error("Giá trị nhập vào phải là một số.");
+                }
+
+                if (doC < -273) {
+                    Error("Nhiệt độ thấp hơn -273 độ C (độ không tuyệt đối).");
+                }
+                this.doC = doC;
+            }
+
+            setNhietDo(doC) {
+                if (typeof doC !== "number") {
+                    Error("Giá trị nhập vào phải là một số.");
+                }
+                if (doC < -273) {
+                   Error("Nhiệt độ không thể thấp hơn -273 độ C (độ không tuyệt đối).");
+                }
+                this.doC = doC;
+            }
+
+            doiSangFahrenheit() {
+                return this.doC * 9 / 5 + 32;
+            }
+
+            doiSangKelvin() {
+                return this.doC + 273.15;
+            }
+        }
+
+
+        const doC = parseFloat(prompt("Nhập số độ C:"));
+        if (isNaN(doC)) {
+            alert("Giá trị nhập vào phải là một số hợp lệ.");
+        } else {
+            const temp = new nhietDo(doC);
+            document.writeln(`Nhiệt độ (°F): ${temp.doiSangFahrenheit().toFixed(2)}°F`);
+            document.writeln(`<br>Nhiệt độ (K): ${temp.doiSangKelvin().toFixed(2)}K`);
+        }
+    </script>
+</body>
+</html>
+
+class Mobile {
+    constructor(name) {
+        this.name = name;
+        this.battery = 100;
+        this.isOn = false;
+        this.draftMessage = "";
+        this.inbox = [];
+        this.sentMessages = [];
+    }
+
+    // Kiểm tra trạng thái điện thoại
+    checkStatus() {
+        return this.isOn;
+    }
+
+    // Bật điện thoại
+    turnOn() {
+        this.isOn = true;
+    }
+
+    // Tắt điện thoại
+    turnOff() {
+        this.isOn = false;
+    }
+
+    // Sạc pin
+    chargeBattery() {
+        if (this.battery < 100) {
+            this.battery++;
+        }
+    }
+
+    // Soạn tin nhắn
+    composeMessage(message) {
+        if (!this.isOn) return;
+        this.draftMessage = message;
+        this.battery--;
+    }
+
+    // Gửi tin nhắn
+    sendMessage(receiver) {
+        if (!this.isOn || this.battery <= 0) return;
+        if (this.draftMessage !== "") {
+            receiver.receiveMessage(this.draftMessage);
+            this.sentMessages.push(this.draftMessage);
+            this.draftMessage = "";
+            this.battery--;
+        }
+    }
+
+    // Nhận tin nhắn
+    receiveMessage(message) {
+        if (!this.isOn) return;
+        this.inbox.push(message);
+        this.battery--;
+    }
+
+    // Xem tin nhắn trong hộp thư đến
+    viewInbox() {
+        if (!this.isOn) return;
+        this.battery--;
+        return this.inbox;
+    }
+
+    // Xem tin nhắn đã gửi
+    viewSentMessages() {
+        if (!this.isOn) return;
+        this.battery--;
+        return this.sentMessages;
+    }
+}
+
+// ======= Sử dụng =======
+
+// Tạo 2 đối tượng: Nokia và iPhone
+let nokia = new Mobile("Nokia");
+let iPhone = new Mobile("iPhone");
+
+// Bật cả hai điện thoại
+nokia.turnOn();
+iPhone.turnOn();
+
+// Nokia soạn và gửi tin nhắn
+nokia.composeMessage("Chào iPhone, đây là Nokia!");
+nokia.sendMessage(iPhone);
+
+// iPhone kiểm tra hộp thư đến
+let messages = iPhone.viewInbox();
+console.log("Tin nhắn trong iPhone inbox:");
+console.log(messages);

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+    #thongTin {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Vẽ Hình Chữ Nhật</h2>
+  <canvas id="khungVe" width="400" height="300"></canvas>
+  <div id="thongTin"></div>
+
+  <script>
+    
+    class HinhChuNhat {
+      constructor(chieuDai, chieuRong) {
+        this.chieuDai = chieuDai;
+        this.chieuRong = chieuRong;
+      }
+
+      dienTich() {
+        return this.chieuDai * this.chieuRong;
+      }
+
+      chuVi() {
+        return 2 * (this.chieuDai + this.chieuRong);
+      }
+
+      ve(ctx, x = 10, y = 10) {
+        ctx.clearRect(0, 0, 400, 300); 
+        ctx.fillStyle = "black"; 
+        ctx.fillRect(x, y, this.chieuDai, this.chieuRong);
+      }
+
+      capNhatKichThuoc(moiDai, moiRong) {
+        this.chieuDai = moiDai;
+        this.chieuRong = moiRong;
+      }
+    }
+
+    
+    const khung = document.getElementById("khungVe");
+    const ctx = khung.getContext("2d");
+    const thongTin = document.getElementById("thongTin");
+
+    
+    const hcn = new HinhChuNhat(120, 70);
+    hcn.ve(ctx);
+
+    thongTin.innerHTML = `
+      <b>Kích thước ban đầu:</b> ${hcn.chieuDai} x ${hcn.chieuRong}<br>
+      Diện tích: ${hcn.dienTich()}<br>
+      Chu vi: ${hcn.chuVi()}
+    `;
+
+    
+    setTimeout(() => {
+      hcn.capNhatKichThuoc(200, 100);
+      hcn.ve(ctx);
+
+      thongTin.innerHTML += `
+        <hr>
+        <b>Sau khi thay đổi:</b> ${hcn.chieuDai} x ${hcn.chieuRong}<br>
+        Diện tích: ${hcn.dienTich()}<br>
+        Chu vi: ${hcn.chuVi()}
+      `;
+    }, 2000);
+  </script>
+
+</body>
+</html>

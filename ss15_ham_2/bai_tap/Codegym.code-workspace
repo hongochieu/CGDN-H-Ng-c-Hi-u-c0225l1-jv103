@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Codegym",
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Codegym"
+	}
+}

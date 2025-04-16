@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô phỏng Công tắc và Đèn</title>
+</head>
+<body>
+    <h2>Mô tả sự tương tác giữa hai đối tượng Ác quy và bóng đèn</h2>
+    <p id="ketQua"></p>
+    <script>
+        class ElectricLamp {
+            constructor() {
+                this.status = false;
+            }
+
+            turnOn() {
+                this.status = true;
+                ghiLog("💡 Đèn đã được bật 🔆");
+            }
+
+            turnOff() {
+                this.status = false;
+                ghiLog("❌💡 Đèn đã tắt");
+            }
+        }
+
+        class SwitchButton {
+            constructor() {
+                this.status = false;
+                this.lamp = null;
+            }
+
+            connectToLamp(lamp) {
+                this.lamp = lamp;
+                ghiLog("🔌 Công tắc đã được kết nối với đèn.");
+            }
+
+            switchOn() {
+                if (this.lamp) {
+                    this.status = true;
+                    ghiLog("🔘 Công tắc đã BẬT");
+                    this.lamp.turnOn();
+                } else {
+                    ghiLog("❌ CHƯA KẾT NỐI CÔNG TẮC VỚI ĐÈN !!");
+                }
+            }
+
+            switchOff() {
+                if (this.lamp) {
+                    this.status = false;
+                    ghiLog("⚫ Công tắc đã TẮT");
+                    this.lamp.turnOff();
+                } else {
+                    ghiLog("❌ CHƯA KẾT NỐI CÔNG TẮC VỚI ĐÈN !!");
+                }
+            }
+        }
+
+        function ghiLog(thongDiep) {
+            document.getElementById("ketQua").innerHTML += thongDiep + "<br>";
+        }
+
+        const lamp = new ElectricLamp();
+        const button = new SwitchButton();
+
+        button.connectToLamp(lamp);
+        for (let i = 1; i <= 10; i++) {
+            ghiLog(`<br>🔁 Lần thứ ${i}:`);
+            button.switchOn();
+            button.switchOff();
+        }
+
+        ghiLog("<br>🔚 Kết thúc mô phỏng.");
+    </script>
+</body>
+</html>

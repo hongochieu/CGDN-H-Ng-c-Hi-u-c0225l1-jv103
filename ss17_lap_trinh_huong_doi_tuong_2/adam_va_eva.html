@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam và Eva ăn táo</title>
+</head>
+<body>
+    <h2>Mô phỏng Adam và Eva ăn táo</h2>
+    <p id="ketQua"></p>
+
+    <script>
+        // Lớp Tao
+        class Tao {
+            #khoiLuong = 10; // thuộc tính riêng
+
+            giamKhoiLuong() {
+                if (this.#khoiLuong > 0) {
+                    this.#khoiLuong--;
+                }
+            }
+
+            hetChua() {
+                return this.#khoiLuong <= 0;
+            }
+
+            layKhoiLuong() {
+                return this.#khoiLuong;
+            }
+        }
+
+        // Lớp Nguoi
+        class Nguoi {
+            constructor(ten, gioiTinh, canNang) {
+                this.ten = ten;
+                this.gioiTinh = gioiTinh; // true: nam, false: nữ
+                this.canNang = canNang;
+            }
+
+            laNam() {
+                return this.gioiTinh;
+            }
+
+            datGioiTinh(gioiTinh) {
+                this.gioiTinh = gioiTinh;
+            }
+
+            kiemTraTao(quaTao) {
+                return !quaTao.hetChua();
+            }
+
+            an(quaTao) {
+                if (!quaTao.hetChua()) {
+                    quaTao.giamKhoiLuong();
+                    this.canNang++;
+                    ghiLog(`${this.ten} đã ăn 1 miếng táo. Cân nặng: ${this.canNang}. Táo còn lại: ${quaTao.layKhoiLuong()}`);
+                } else {
+                    ghiLog(`${this.ten} không thể ăn vì táo đã hết.`);
+                }
+            }
+
+            noi(chuoi) {
+                ghiLog(`${this.ten} nói: "${chuoi}"`);
+            }
+
+            layTen() {
+                return this.ten;
+            }
+
+            datTen(tenMoi) {
+                this.ten = tenMoi;
+            }
+
+            layCanNang() {
+                return this.canNang;
+            }
+
+            datCanNang(giaTri) {
+                this.canNang = giaTri;
+            }
+        }
+
+        // Hàm ghi log ra trình duyệt
+        function ghiLog(thongDiep) {
+            document.getElementById("ketQua").innerHTML += thongDiep + "<br>";
+            console.log(thongDiep);
+        }
+
+        // Khởi tạo đối tượng
+        const tao = new Tao();
+        const adam = new Nguoi("Adam", true, 50);
+        const eva = new Nguoi("Eva", false, 45);
+
+        // Mô phỏng ăn táo
+        while (!tao.hetChua()) {
+            adam.an(tao);
+            if (!tao.hetChua()) {
+                eva.an(tao);
+            }
+        }
+
+        // Kết thúc
+        ghiLog("Táo đã hết. Kết thúc mô phỏng.");
+    </script>
+</body>
+</html>

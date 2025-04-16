@@ -20,7 +20,7 @@
   <div id="thongTin"></div>
 
   <script>
-    
+    // Định nghĩa lớp HinhChuNhat
     class HinhChuNhat {
       constructor(chieuDai, chieuRong) {
         this.chieuDai = chieuDai;
@@ -36,7 +36,7 @@
       }
 
       ve(ctx, x = 10, y = 10) {
-        ctx.clearRect(0, 0, 400, 300); 
+        ctx.clearRect(0, 0, 400, 300); // Xóa canvas
         ctx.fillStyle = "black"; 
         ctx.fillRect(x, y, this.chieuDai, this.chieuRong);
       }
@@ -47,12 +47,12 @@
       }
     }
 
-    
+    // Lấy đối tượng canvas và context
     const khung = document.getElementById("khungVe");
     const ctx = khung.getContext("2d");
     const thongTin = document.getElementById("thongTin");
 
-    
+    // Tạo hình chữ nhật ban đầu
     const hcn = new HinhChuNhat(120, 70);
     hcn.ve(ctx);
 
@@ -62,7 +62,7 @@
       Chu vi: ${hcn.chuVi()}
     `;
 
-    
+    // Sau 2 giây, cập nhật kích thước
     setTimeout(() => {
       hcn.capNhatKichThuoc(200, 100);
       hcn.ve(ctx);

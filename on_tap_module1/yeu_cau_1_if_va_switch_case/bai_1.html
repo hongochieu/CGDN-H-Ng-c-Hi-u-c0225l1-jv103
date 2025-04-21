@@ -1,0 +1,76 @@
+                    <!-- if và else -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>if và else</h3>
+    <script>
+        function tinhThueVaLuongRong(luong) {
+            let thueSuat;
+
+            if(luong >= 15000000) {
+                thueSuat = 0.2;
+            }else if (luong >= 7000000) {
+                thueSuat = 0.1;
+            }else{
+                thueSuat = 0.05;
+            }
+
+            let thueThuNhap = luong * thueSuat;
+            let luongRong = luong - thueThuNhap;
+
+            return { thueThuNhap, luongRong };
+        }
+
+        let luongNhap = Number(prompt("Nhập lương nhân viên: "));
+        let ketQua = tinhThueVaLuongRong(luongNhap);
+
+        document.writeln(`Thuế thu nhập của ${luongNhap} VNĐ là: ${ketQua.thueThuNhap} VNĐ <br>`);
+        document.writeln(`Lương ròng của ${luongNhap} VNĐ là: ${ketQua.luongRong} VNĐ <br>`)
+    </script>
+</body>
+</html>
+
+                            <!-- Swich case -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Swich case</h3>
+    <script>
+        function tinhThueVaLuongRong(luong) {
+            let thueSuat;
+            
+            switch (true){
+                case luong >= 15000000:
+                    thueSuat = 0.2;
+                    break
+                case luong >= 7000000:
+                    thueSuat = 0.1;
+                    break
+                default:
+                    thueSuat = 0.05;
+            }
+
+            let thueThuNhap = luong * thueSuat;
+            let luongRong = luong - thueThuNhap;
+
+            return { thueThuNhap, luongRong }
+        }
+
+        let luongNhap1 = Number(prompt("Nhập lương nhân viên: "));
+        let ketQua1 = tinhThueVaLuongRong(luongNhap);
+
+        document.writeln(`Thuế thu nhập của ${luongNhap1} VNĐ là: ${ketQua.thueThuNhap} VNĐ <br>`);
+        document.writeln(`Lương ròng của ${luongNhap1} VNĐ là: ${ketQua.luongRong} VNĐ`)
+    </script>
+</body>
+</html>

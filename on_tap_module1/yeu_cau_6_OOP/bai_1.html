@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addHocVien()">Thêm mới học viên</button>
+    <button onclick="editHocVien()">Sửa thông tin học viên</button>
+    <button onclick="deleteHocVien()">Xóa học viên</button><br><br>
+    <div id="studentTable"></div>
+    <script>
+        class HocVien{
+            constructor (maHV, tenHV, lopHV, emailHV, ngaySinhHV, moduleHV) {
+                this.ma = maHV;
+                this.ten = tenHV;
+                this.lop = lopHV;
+                this.email = emailHV;
+                this.ngaySinh = ngaySinhHV;
+                this.module = moduleHV;
+            }
+        }
+
+        let danhSachHocVien = [];
+        
+        function hienThiDanhSach() {
+            let tableString = `<table border="1" style="border-collapse: collapse;">
+                                <tr>
+                                    <th>Mã học viên</th>
+                                    <th>Tên</th>
+                                    <th>Lớp</th>
+                                    <th>Email</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Module</th>
+                                </tr>`;
+
+        
+            for(let hv of danhSachHocVien) {
+                tableString += `<tr>
+                                    <td>${hv.ma}</td>
+                                    <td>${hv.ten}</td>
+                                    <td>${hv.lop}</td>
+                                    <td>${hv.email}</td>
+                                    <td>${hv.ngaySinh}</td>
+                                    <td>${hv.module}</td>
+                                </tr>`
+            }
+
+            tableString += `</table>`;
+
+            document.getElementById("studentTable").innerHTML = tableString;
+        }
+
+            
+//------------------------------------------------ HÀM THÊM THÔNG TIN HỌC VIÊN -----------------------------------------------------//
+
+        function addHocVien() {
+            let maHV = prompt("Nhập mã của học viên:")
+            let tenHV = prompt("Nhập tên của học viên:")
+            let lopHV = prompt("Nhập lớp của học viên:")
+            let emailHV = prompt("Nhập email của học viên:")
+            let ngaySinhHV = prompt("Nhập ngày sinh của học viên (dd/mm/yyyy):")
+            let moduleHV = prompt("Nhập module của học viên:")
+
+            const regexNgaySinh = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+
+            if(tenHV.length > 50) {
+                alert("Tên học viên không được vượt quá 50 ký tự.");
+                return;
+            }
+
+            if(maHV && tenHV && lopHV && emailHV && ngaySinhHV && moduleHV) {
+                if(!regexNgaySinh.test(ngaySinhHV)) {
+                    alert("Ngày sinh không đúng định dạng dd/mm/yyyy");
+                    return;
+                }
+
+                let hv = new HocVien(maHV, tenHV, lopHV, emailHV, ngaySinhHV, moduleHV);
+                danhSachHocVien.push(hv);
+                hienThiDanhSach();
+            }else{
+                alert("Bạn cần nhập đầy đủ thông tin.");
+            }
+        }
+
+//------------------------------------------------ HÀM SỬA TÊN HỌC VIÊN -----------------------------------------------------//
+
+        function editHocVien() {
+          let maCanSua = prompt("Nhập mã học viên cần sửa: ");
+          let index = danhSachHocVien.findIndex(hv => hv.ma === maCanSua);
+          
+          if(index !== -1) {
+            let tenMoi = prompt("Nhập tên mới:", danhSachHocVien[index].ten);
+            let lopMoi = prompt("Nhập lớp mới:", danhSachHocVien[index].lop);
+            let emailMoi = prompt("Nhập email mới:", danhSachHocVien[index].email);
+            let ngaySinhMoi = prompt("Nhập ngày sinh mới (dd/mm/yyyy):", danhSachHocVien[index].ngaySinh);
+            let moduleMoi = prompt("Nhập module mới:", danhSachHocVien[index].module);
+
+            const regexNgaySinh = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+
+            if(tenMoi.length > 50) {
+            alert("Tên học viên không được vượt quá 50 ký tự.");
+            return;
+          }
+
+            if(!regexNgaySinh.test(ngaySinhMoi)) {
+                alert("Ngày sinh không đúng định dang dd/mm/yyyy");
+                return;
+            }
+
+            danhSachHocVien[index] = new HocVien(maCanSua, tenMoi, lopMoi, emailMoi, ngaySinhMoi, moduleMoi);
+
+            hienThiDanhSach();
+          }else{
+            alert("Mã học viên không tồn tại.");
+          }
+        }
+
+//------------------------------------------------ HÀM XÓA HỌC VIÊN -----------------------------------------------------//
+
+        function deleteHocVien() {
+            let maCanXoa = prompt("Nhập mã học viên cần xóa:");
+            let index = danhSachHocVien.findIndex(hv => hv.ma === maCanXoa);
+
+            if(index !== -1){
+                let xacNhan = confirm("Bạn có chắc chắn xóa học viên này không ?");
+                
+                if(xacNhan) {
+                    danhSachHocVien.splice(index, 1);
+                    hienThiDanhSach();
+                }
+            }else{
+                alert("Mã học viên Không tồn tại.")
+            }
+        }
+    </script>
+</body>
+</html>

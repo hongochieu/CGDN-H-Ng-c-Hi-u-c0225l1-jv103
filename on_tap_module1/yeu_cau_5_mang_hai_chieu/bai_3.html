@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3 - Tìm max và min</title>
+</head>
+<body>
+    <h2>Giá trị lớn nhất và nhỏ nhất</h2>
+    <div id="output"></div>
+
+    <script>
+        function nhapMaTran(m, n) {
+            let matrix = [];
+            for (let i = 0; i < m; i++) {
+                let row = [];
+                for (let j = 0; j < n; j++) {
+                    let value = parseInt(prompt(`Nhập phần tử tại hàng ${i+1}, cột ${j+1}:`));
+                    row.push(value);
+                }
+                matrix.push(row);
+            }
+            return matrix;
+        }
+
+        function timMaxVaMin(matrix) {
+            let max = matrix[0][0];
+            let min = matrix[0][0];
+
+            for (let row of matrix) {
+                for (let value of row) {
+                    if (value > max) max = value;
+                    if (value < min) min = value;
+                }
+            }
+            return { max, min };
+        }
+
+        let m = parseInt(prompt("Nhập số hàng:"));
+        let n = parseInt(prompt("Nhập số cột:"));
+
+        let maTran = nhapMaTran(m, n);
+        let { max, min } = timMaxVaMin(maTran);
+
+        document.getElementById("output").innerHTML =
+            `Giá trị lớn nhất trong ma trận là: ${max}<br>` +
+            `Giá trị nhỏ nhất trong ma trận là: ${min}`;
+    </script>
+</body>
+</html>

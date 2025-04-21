@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Thức Uống</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #menu {
+            margin-bottom: 20px;
+        }
+        .drink-option {
+            margin: 5px 0;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chọn thức uống</h1>
+    <div id="menu">
+        <div class="drink-option">1. Cafe - 15000 VNĐ</div>
+        <div class="drink-option">2. Cam vắt - 20000 VNĐ</div>
+        <div class="drink-option">3. Nước ép cà rốt - 20000 VNĐ</div>
+        <div class="drink-option">4. Nước ép cà chua - 18000 VNĐ</div>
+        <div class="drink-option">5. Nước lọc - 5000 VNĐ</div>
+        <div class="drink-option">6. Nước dừa - 15000 VNĐ</div>
+        <div class="drink-option">7. Thoát gọi món</div>
+    </div>
+
+    <button onclick="startOrder()">Bắt đầu gọi món</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        const drinks = [
+            { name: "Cafe", price: 15000 },
+            { name: "Cam vắt", price: 20000 },
+            { name: "Nước ép cà rốt", price: 20000 },
+            { name: "Nước ép cà chua", price: 18000 },
+            { name: "Nước lọc", price: 5000 },
+            { name: "Nước dừa", price: 15000 }
+        ];
+
+        let total = 0;
+        let orderHistory = [];
+
+        function startOrder() {
+            let choice;
+            do {
+                choice = parseInt(prompt("Chọn thức uống (1-7):"));
+                if (choice >= 1 && choice <= 6) {
+                    const drink = drinks[choice - 1];
+                    const quantity = parseInt(prompt(`Bạn muốn mua bao nhiêu ly ${drink.name}?`));
+                    const cost = drink.price * quantity;
+                    total += cost;
+                    orderHistory.push(`${quantity} ly ${drink.name} - ${cost} VNĐ`);
+                    alert(`Đã chọn ${quantity} ly ${drink.name}, tổng tiền là: ${cost} VNĐ`);
+                } else if (choice !== 7) {
+                    alert("Lựa chọn không hợp lệ. Vui lòng thử lại.");
+                }
+            } while (choice !== 7);
+
+            showResult();
+        }
+
+        function showResult() {
+            let resultText = "<h2>Chi tiết đơn hàng:</h2>";
+            orderHistory.forEach(item => {
+                resultText += `<p>${item}</p>`;
+            });
+            resultText += `<p><strong>Tổng tiền bạn cần thanh toán: ${total} VNĐ</strong></p>`;
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>

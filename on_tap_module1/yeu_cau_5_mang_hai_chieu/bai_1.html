@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function nhapMaTran(m, n) {
+            let matrix = [];
+            for (let i = 0; i < m; i++) {
+                let row = [];
+                for(let j = 0; j < n; j++) {
+                    let value = parseInt(prompt(`Nhập phần tử tại hàng ${i + 1}, cột ${j + 1}:`));
+                    row.push(value);
+                }
+                matrix.push(row);
+            }
+            return matrix;
+        }
+
+        function tinhTongChan(matrix) {
+            let tong = 0;
+            for (let row of matrix) {
+                for (let value of row) {
+                    if (value % 2 === 0) {
+                        tong += value;
+                    }
+                }
+            }
+            return tong;
+        }
+
+        let m = parseInt(prompt("Nhập số hàng m:"));
+        let n = parseInt(prompt("Nhập số cột n:"));
+
+        let maTran = nhapMaTran(m, n);
+        let tongChan = tinhTongChan(maTran);
+
+        document.writeln("<h3>Ma trận đã nhập:</h3>");
+        for(let i = 0; i < m; i++) {
+            document.writeln(maTran[i].join(" ") + "<br>");
+        }
+
+        document.writeln("<h3>Tổng các số chẵn trong ma trận là:" + tongChan +"</h3>");
+    </script>
+</body>
+</html>

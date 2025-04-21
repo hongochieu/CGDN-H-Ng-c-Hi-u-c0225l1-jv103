@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let char = prompt("Nhập một ký tự:");
+
+        if(char.length !== 1 || !/[a-zA-Z]/.test(char)) {
+            alert("Vui lòng nhập một ký tự hợp lệ.");
+        }else{
+            let lowerChar = char.toLowerCase();
+
+            switch(lowerChar) {
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                    document.writeln(`${char} là nguyên âm`)
+                    break;
+                default:
+                    document.writeln(`${char} là phụ âm`);
+                    break;
+
+            }
+        }
+    </script>
+</body>
+</html>

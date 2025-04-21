@@ -1,0 +1,34 @@
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vẽ Tam Giác Vuông Cân</title>
+    </head>
+    <body>
+        <label for="height">Nhập chiều cao tam giác:</label>
+        <input type="number" id="height" min="1" value="5">
+        <button onclick="drawTamGiac()">Vẽ Tam Giác</button>
+        <pre id="tamGiac"></pre>
+
+        <script>
+            function drawTamGiac() {
+                let h = document.getElementById("height").value;
+                let output = '';
+
+                for (let i = 0; i < h; i++) {
+                    for (let j = 0; j <= i; j++) {
+                        if (j === 0 || j === i || i === h - 1) {
+                            output += '* ';
+                        } else {
+                            output += '  ';
+                        }
+                    }
+                    output += '\n';
+                }
+
+                document.getElementById("tamGiac").innerText = output;
+            }
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function commonCharacterCount(s1, s2) {
+            let count = 0;
+            let arr2 = s2.split('');
+
+            for (let char of s1) {
+                let index = arr2.indexOf(char);
+                if (index !== -1) {
+                    count++;
+                    arr2.splice(index, 1); // Xóa ký tự đã dùng để tránh đếm lại
+                }
+            }
+
+            return count;
+        }
+
+        // Ví dụ sử dụng:
+        let s1 = "aabcc";
+        let s2 = "adcaa";
+        document.writeln(commonCharacterCount(s1, s2)); // Output: 3
+
+    </script>
+</body>
+</html>

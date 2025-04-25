@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 2 - Đếm ký tự khác nhau</title>
+</head>
+<body>
+  <script>
+    function differentSymbolsNaive(s) {
+      let set = new Set(s);
+      return set.size;
+    }
+
+    // Ví dụ
+    let s = "cabca";
+    document.write("<p><strong>Xâu:</strong> " + s + "</p>");
+    document.write("<p><strong>Số ký tự khác nhau:</strong> " + differentSymbolsNaive(s) + "</p>");
+  </script>
+</body>
+</html>

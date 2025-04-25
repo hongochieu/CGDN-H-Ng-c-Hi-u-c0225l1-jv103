@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 1 - Chuẩn hóa xâu và tìm từ dài nhất</title>
+</head>
+<body>
+  <h2>Bài 1</h2>
+  <script>
+    // Hàm chuẩn hóa xâu
+    function chuanHoaXau(str) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ') // bỏ khoảng trắng thừa
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    }
+
+    // Hàm tìm từ dài nhất
+    function timTuDaiNhat(str) {
+      let words = str.trim().split(/\s+/);
+      let maxWord = words[0];
+      for (let word of words) {
+        if (word.length > maxWord.length) {
+          maxWord = word;
+        }
+      }
+      return maxWord;
+    }
+
+    // Hàm main
+    function main() {
+      let xau = "tRuong    TaN   HAI";
+      document.write("<p><strong>Xâu ban đầu:</strong> " + xau + "</p>");
+
+      let chuanHoa = chuanHoaXau(xau);
+      document.write("<p><strong>Xâu sau khi chuẩn hóa:</strong> " + chuanHoa + "</p>");
+
+      let tuDaiNhat = timTuDaiNhat(chuanHoa);
+      document.write("<p><strong>Từ dài nhất:</strong> " + tuDaiNhat + "</p>");
+    }
+
+    main();
+  </script>
+</body>
+</html>

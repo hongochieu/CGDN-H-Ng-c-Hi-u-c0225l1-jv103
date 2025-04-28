@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lamTronDiem(diem) {
+            if(diem <0 || diem > 100) {
+                alert("Điểm bạn nhập không hợp lệ !. Vui lòng nhập điểm từ 0 đến 100");
+                return;
+            }
+
+            if (diem < 50 ){
+                document.writeln("Bạn không đủ điều kiện để ĐẠT.<br>")
+                return diem;
+            }
+
+            if (diem > 50) {
+                document.writeln("Chúc mừng bạn đã ĐẠT. <br>")
+            }
+
+            let boiSoTiepTheo = Math.ceil(diem/5)*5;
+
+            if (boiSoTiepTheo - diem < 3) {
+                return boiSoTiepTheo;
+            }
+
+            return diem;
+        }
+
+        function nhapDiem() {
+            let diemNhap = prompt("Nhập điểm của học sinh")
+
+            if (diemNhap === null){
+                alert("Bạn đã nhập sai")
+                return;
+            }
+
+            diemNhap = Number(diemNhap);
+
+            if(isNaN(diemNhap)) {
+                alert("Giá trị bạn nhập không phải là số! Vui lòng thử lại.")
+                return;
+            }
+
+            let diemLamTron = lamTronDiem(diemNhap);
+            document.writeln("Điểm sau khi làm tròn:" + diemLamTron);
+        }
+        nhapDiem();
+    </script>
+</body>
+</html>

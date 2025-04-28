@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function taoVietTat(chuoi) {
+            // Xóa khoảng trắng thừa ở đầu và cuối, rồi tách từ
+            let tu = chuoi.trim().split(/\s+/); // \s+ nghĩa là 1 hoặc nhiều dấu cách
+
+            if (tu.length < 2) {
+                return "Chuỗi chỉ có 1 từ nên không cần viết tắt";
+            } else {
+                let vietTat = "";
+                for (let i = 0; i < tu.length; i++) {
+                    vietTat += tu[i][0].toUpperCase();
+                }
+                return vietTat;
+            }
+        }
+
+        // Ví dụ test thử
+        document.writeln(taoVietTat("object    oriented    programming")); // OOP
+        document.writeln(taoVietTat("   ObjectOriented   ")); // Chuỗi chỉ có 1 từ nên không cần viết tắt
+
+    </script>
+</body>
+</html>

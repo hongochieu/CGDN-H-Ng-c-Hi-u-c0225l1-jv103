@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class DanhBa{
+            constructor(soDienThoai, tenChuDanhBa, diaChi) {
+                this.soDienThoai = soDienThoai;
+                this.tenChuDanhBa = tenChuDanhBa;
+                this.diaChi = diaChi;
+            }
+            hienThi() {
+                return `Tên: ${this.tenChuDanhBa}, Số điện thoại: ${this.soDienThoai}, Địa chỉ: ${this.diaChi}<br><br>`;
+            }
+        }
+
+        class QuanLyDanhBa{
+            constructor() {
+                this.danhBaList = []
+            }
+            themDanhBa(danhBa){
+                this.danhBaList.push(danhBa);
+            }
+            hienThiDanhBa() {
+                if(this.danhBaList.length === 0){
+                    alert("Danh ba rỗng!")
+                } else {
+                    this.danhBaList.forEach((danhBa, index) => {
+                        document.writeln(`Danh bạ ${index + 1}: ${danhBa.hienThi()}`);
+                    }) ;
+                }
+            }
+            xoaDanhBa(soDienThoai) {
+                const index = this.danhBaList.findIndex(danhBa => danhBa.soDienThoai === soDienThoai);
+
+                if(index !== -1) {
+                    this.danhBaList.splice(index, 1);
+                    document.writeln(`Danh bạ với số điện thoại ${soDienThoai} đã được xóa.`);
+                } else {
+                    document.writeln("Số điện thoại không tồn tại trong danh bạ.")
+                }
+            }
+        }
+        const quanLy = new QuanLyDanhBa();
+
+
+        quanLy.themDanhBa(new DanhBa("0901234567", "Nguyễn Văn A", "Hà Nội"));
+        quanLy.themDanhBa(new DanhBa("0912345678", "Trần Thị B", "TP.HCM"));
+        quanLy.themDanhBa(new DanhBa("0923456789", "Lê Minh C", "Đà Nẵng"));
+
+
+        quanLy.hienThiDanhBa();
+
+
+        quanLy.xoaDanhBa("0912345678");
+
+
+        quanLy.hienThiDanhBa();
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family: Arial;
+          margin: 40px;
+        }
+    
+        input[type="text"] {
+          padding: 8px;
+          width: 250px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 250px;
+        }
+    
+        button {
+          padding: 8px 12px;
+          margin-left: 5px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          cursor: pointer;
+        }
+    
+        table {
+          border-collapse: collapse;
+          margin-top: 20px;
+          width: 100%;
+        }
+    
+        th, td {
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+          text-align: left;
+        }
+    
+        tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+    
+        .highlight {
+          color: darkred;
+          font-weight: bold;
+        }
+      </style>
+</head>
+<body>
+    <h2>Quản lý khách hàng</h2>
+    <div class="conteiner"><input type="number" placeholder="Nhập mã khách hàng" id="id"><br><br>
+        <input type="text" placeholder="Nhập tên khách hàng" id="name"><br><br>
+        <input type="number" placeholder="Nhập số điện thoại khách hàng" id="phone"><br><br>
+        <input type="text" placeholder="Nhập địa chỉ khách hàng" id="address"><br><br>
+        <input type="text" placeholder="Nhập Email khách hàng" id="email"><br><br>
+    </div>
+    
+
+    <button onclick="addKhachHang()">Thêm thông tin khách hàng</button>
+
+    <p id="display"></p>
+
+    </table>
+    <script>
+        class KhachHang{
+            constructor (maKH, tenKH, soDienThoaiKH, diaChiKH, emailKH) {
+                this.ma = maKH;
+                this.ten = tenKH;
+                this.so = soDienThoaiKH;
+                this.diaChi = diaChiKH;
+                this.email = emailKH;
+            }
+        }
+
+        let danhSachKhachHang = [];
+
+        function hienThiDanhSach() {
+            let tableString = `<table border="1" style="border-collapse: collapse;">
+                                <tr>
+                                    <th>Mã khách hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Email</th>
+                                </tr>`
+
+        for(let kh of danhSachKhachHang) {
+            tableString += `<tr>
+                                <td>${kh.ma}</td>
+                                <td>${kh.ten}</td>
+                                <td>${kh.so}</td>
+                                <td>${kh.diaChi}</td>
+                                <td>${kh.email}</td>
+                            </tr>`
+            }
+            tableString +=`</table>`;
+
+            document.getElementById("display").innerHTML = tableString;
+        }
+
+        function addKhachHang() {
+            let maKH = document.getElementById("id").value;
+            let tenKH = document.getElementById("name").value;
+            let soDienThoaiKH = document.getElementById("phone").value;
+            let diaChiKH = document.getElementById("address").value;
+            let emailKH = document.getElementById("email").value;
+
+            if (!maKH || !tenKH || !soDienThoaiKH || !diaChiKH || !emailKH) {
+                alert("Vui lòng nhập đầy đủ thông tin sản phẩm.");
+                return;
+            }
+
+            let newKhachHang = new KhachHang (maKH, tenKH, soDienThoaiKH, diaChiKH, emailKH);
+
+            danhSachKhachHang.push(newKhachHang);
+
+            hienThiDanhSach();
+        }
+
+         display();
+
+    </script>
+</body>
+</html>

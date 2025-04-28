@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra tam giác vuông</title>
+</head>
+<body>
+    <script>
+        function nhapMang() {
+            let n;
+            do {
+                n = parseInt(prompt("Nhập số phần tử của mảng (n <= 15 và n là bội số của 3):"));
+            } while (isNaN(n) || n > 15 || n % 3 !== 0);
+
+            let arr = [];
+            for (let i = 0; i < n; i++) {
+                let so = parseInt(prompt(`Nhập phần tử thứ ${i+1}:`));
+                arr.push(so);
+            }
+            return arr;
+        }
+
+        function hienThiMang(arr) {
+            document.writeln(`Mảng vừa nhập: [${arr.join(", ")}]<br><br>`);
+        }
+
+        function laTamGiacVuong(a, b, c) {
+            let arr = [a, b, c];
+            arr.sort((x, y) => x - y); // sắp xếp tăng dần
+
+            // Kiểm tra định lý Pythagoras: a² + b² = c²
+            return arr[0] * arr[0] + arr[1] * arr[1] === arr[2] * arr[2];
+        }
+
+        function kiemTraMang(arr) {
+            let ok = true;
+            for (let i = 0; i < arr.length; i += 3) {
+                if (!laTamGiacVuong(arr[i], arr[i+1], arr[i+2])) {
+                    ok = false;
+                    break;
+                }
+            }
+
+            if (ok) {
+                document.writeln("OK");
+            } else {
+                document.writeln("NO");
+            }
+        }
+
+        // Main
+        let arr = nhapMang();
+        hienThiMang(arr);
+        kiemTraMang(arr);
+    </script>
+</body>
+</html>

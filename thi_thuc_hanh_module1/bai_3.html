@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <label for="arr">Nhập mảng số nguyên (dùng dấu phẩy phân cách):</label><br>
+    <input type="text" id="arr" placeholder="Ví dụ: 1,2,3,4,5,6"><br><br>
+
+    <label for="k">Nhập số nguyên dương k:</label><br>
+    <input type="number" id="k" min="1"><br><br>
+
+    <button onclick="countPairs()">Tính kết quả</button><br><br>
+
+    <p id="result"></p>
+
+    <script>
+        function countPairs() {
+            
+            let arr = document.getElementById("arr").value.split(',').map(Number);
+            let k = parseInt(document.getElementById("k").value);
+
+            
+            if (arr.some(isNaN) || isNaN(k) || k <= 0) {
+                alert("Vui lòng nhập mảng hợp lệ và k là số nguyên dương.");
+                return;
+            }
+
+            
+            let count = 0;
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if ((arr[i] + arr[j]) % k === 0) {
+                        count++;
+                    }
+                }
+            }
+
+            
+            document.getElementById("result").textContent = `Số cặp có tổng chia hết cho ${k}: ${count}`;
+        }
+    </script>
+</body>
+</html>

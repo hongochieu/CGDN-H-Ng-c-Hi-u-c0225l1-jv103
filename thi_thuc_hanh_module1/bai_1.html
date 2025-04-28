@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bội chung của 3 và 5</title>
+</head>
+<body>
+    <script>
+        function timVaTinhTongBoiSo(arr) {
+            if (arr.length > 20) {
+                document.writeln("Mảng có quá 20 phần tử!");
+                return;
+            }
+
+            let boiSo = [];
+            let sum = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 3 === 0 && arr[i] % 5 === 0) {
+                    boiSo.push(arr[i]);
+                    sum += arr[i];
+                }
+            }
+
+            document.writeln("Mảng ban đầu: " + arr.join(", ") + "<br>");
+            document.writeln("Các số là bội chung của 3 và 5: " + boiSo.join(", ") + "<br>");
+            document.writeln("Tổng các số bội chung của 3 và 5: " + sum);
+        }
+
+        
+        const array = [15, 30, 7, 10, 3, 5, 45, 60];
+        timVaTinhTongBoiSo(array);
+    </script>
+</body>
+</html>
